@@ -1,13 +1,9 @@
-# Runnable super-rentals tutorial
-
-[![Build Status](https://github.com/ember-learn/super-rentals-tutorial/actions/workflows/build.yml/badge.svg)](https://github.com/ember-learn/super-rentals-tutorial/actions/workflows/build.yml)
+# Runnable super-rentals tutorial (Classic Edition)
 
 ## What?
 
-This allows you to create a runnable tutorial by embedding special runnable
-instructions (directives) in the markdown source, using the triple-backtick
-markdown code block syntax. These code blocks will be executed at build time
-and replaced with their output in the final markdown files.
+A fork of the [super-rentals](https://github.com/ember-learn/super-rentals) tutorial
+to run agains the classic blueprint as a nightly CI.
 
 ## Why?
 

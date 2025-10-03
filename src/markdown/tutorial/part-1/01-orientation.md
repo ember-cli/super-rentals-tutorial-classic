@@ -43,7 +43,7 @@ ember new super-rentals --lang en --strict --pnpm \
   | awk '{ gsub("Pnpm", "npm"); gsub("pnpm", "npm"); print }'
 
 #[cfg(not(all(ci, unix)))]
-ember new super-rentals --lang en --strict --pnpm
+ember new super-rentals -b @ember-tooling/classic-build-app-blueprint --lang en --strict --pnpm
 ```
 
 ```run:file:patch hidden=true cwd=super-rentals filename=index.html
