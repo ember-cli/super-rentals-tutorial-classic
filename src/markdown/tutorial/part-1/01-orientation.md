@@ -47,7 +47,7 @@ Hack: make an empty package.json to convince ember-cli we are really not in an E
 
 #[cfg(all(ci, unix))]
 #[display(ember new super-rentals --lang en --strict)]
-ember new super-rentals --lang en --strict --pnpm \
+ember new super-rentals -b @ember-tooling/classic-build-app-blueprint --lang en --strict --pnpm \
   | awk '{ gsub("Pnpm", "npm"); gsub("pnpm", "npm"); print }'
 
 #[cfg(not(all(ci, unix)))]
