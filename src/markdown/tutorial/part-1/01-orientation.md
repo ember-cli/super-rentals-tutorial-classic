@@ -39,7 +39,7 @@ We can create a new project using Ember CLI's `new` command. It follows the patt
 
 #[cfg(all(ci, unix))]
 #[display(ember new super-rentals --lang en --strict)]
-ember new super-rentals --lang en --strict --pnpm \
+ember new super-rentals -b @ember-tooling/classic-build-app-blueprint --lang en --strict --pnpm \
   | awk '{ gsub("Pnpm", "npm"); gsub("pnpm", "npm"); print }'
 
 #[cfg(not(all(ci, unix)))]
