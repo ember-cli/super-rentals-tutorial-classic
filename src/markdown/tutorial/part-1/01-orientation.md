@@ -206,10 +206,20 @@ pnpm i --save-dev concurrently
 git add package.json
 ```
 
+```run:file:patch hidden=true lang=js cwd=super-rentals filename=config/optional-features.json
+@@ -5,3 +5,4 @@
+   "template-only-glimmer-components": true,
+-  "no-implicit-route-model": true
++  "no-implicit-route-model": true,
++  "use-ember-modules": true
+ }
+```
+
 ```run:command hidden=true cwd=super-rentals
 pnpm test
 git add .prettierignore
 git add app/index.html
+git add config/optional-features.json
 git add config/environment.js
 git add public/_redirects
 git add tests/index.html
