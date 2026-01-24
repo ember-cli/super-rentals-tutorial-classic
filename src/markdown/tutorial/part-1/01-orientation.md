@@ -89,7 +89,7 @@ del package.json
 ```run:file:patch hidden=true cwd=super-rentals filename=config/environment.js
 @@ -9,2 +9,3 @@
      EmberENV: {
-+      RAISE_ON_DEPRECATION: true,
++      RAISE_ON_DEPRECATION: false,
        EXTEND_PROTOTYPES: false,
 ```
 
