@@ -202,7 +202,7 @@ del package.json
 ```
 
 ```run:command hidden=true cwd=super-rentals
-pnpm exec prettier ember-cli-build.js --write
+./node_modules/.bin/prettier ember-cli-build.js --write
 ```
 
 ```run:command hidden=true cwd=super-rentals
