@@ -202,6 +202,10 @@ del package.json
 ```
 
 ```run:command hidden=true cwd=super-rentals
+pnpm exec prettier ember-cli-build.js --write
+```
+
+```run:command hidden=true cwd=super-rentals
 pnpm i --save-dev concurrently
 git add package.json
 ```
@@ -209,6 +213,7 @@ git add package.json
 ```run:command hidden=true cwd=super-rentals
 pnpm test
 git add .prettierignore
+git add ember-cli-build.js
 git add app/index.html
 git add config/environment.js
 git add public/_redirects
