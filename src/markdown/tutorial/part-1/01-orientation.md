@@ -202,7 +202,7 @@ del package.json
 ```
 
 ```run:command hidden=true cwd=super-rentals
-./node_modules/.bin/prettier ember-cli-build.js --write
+node -e "const fs=require('fs'),f='ember-cli-build.js';fs.writeFileSync(f,fs.readFileSync(f,'utf8').replace(/\n{3,}/g,'\n\n'));"
 ```
 
 ```run:command hidden=true cwd=super-rentals
