@@ -191,7 +191,7 @@ wait  #qunit-banner.qunit-pass
 Alright, now that we have our model set up, it's time to refactor our route handlers to use EmberData and remove the duplication!
 
 ```run:file:patch lang=js cwd=super-rentals filename=app/routes/index.js
-@@ -1,22 +1,11 @@
+@@ -1,23 +1,11 @@
  import Route from '@ember/routing/route';
 -
 -const COMMUNITY_CATEGORIES = ['Condo', 'Townhouse', 'Apartment'];
@@ -200,6 +200,7 @@ Alright, now that we have our model set up, it's time to refactor our route hand
 
  export default class IndexRoute extends Route {
 -  async model() {
+-    // eslint-disable-next-line warp-drive/no-external-request-patterns
 -    let response = await fetch('/api/rentals.json');
 -    let { data } = await response.json();
 -
@@ -223,7 +224,7 @@ Alright, now that we have our model set up, it's time to refactor our route hand
 ```
 
 ```run:file:patch lang=js cwd=super-rentals filename=app/routes/rental.js
-@@ -1,20 +1,13 @@
+@@ -1,21 +1,13 @@
  import Route from '@ember/routing/route';
 -
 -const COMMUNITY_CATEGORIES = ['Condo', 'Townhouse', 'Apartment'];
@@ -232,6 +233,7 @@ Alright, now that we have our model set up, it's time to refactor our route hand
 
  export default class RentalRoute extends Route {
 -  async model(params) {
+-    // eslint-disable-next-line warp-drive/no-external-request-patterns
 -    let response = await fetch(`/api/rentals/${params.rental_id}.json`);
 -    let { data } = await response.json();
 -
