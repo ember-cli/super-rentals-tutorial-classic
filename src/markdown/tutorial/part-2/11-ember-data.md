@@ -191,7 +191,7 @@ wait  #qunit-banner.qunit-pass
 Alright, now that we have our model set up, it's time to refactor our route handlers to use EmberData and remove the duplication!
 
 ```run:file:patch lang=js cwd=super-rentals filename=app/routes/index.js
-@@ -1,23 +1,11 @@
+@@ -1,24 +1,12 @@
  import Route from '@ember/routing/route';
 -
 -const COMMUNITY_CATEGORIES = ['Condo', 'Townhouse', 'Apartment'];
@@ -205,7 +205,7 @@ Alright, now that we have our model set up, it's time to refactor our route hand
 -    let { data } = await response.json();
 -
 -    return data.map((model) => {
--      let { id, attributes } = model;
+-      let { attributes } = model;
 -      let type;
 +  @service store;
 
@@ -215,7 +215,7 @@ Alright, now that we have our model set up, it's time to refactor our route hand
 -        type = 'Standalone';
 -      }
 -
--      return { id, type, ...attributes };
+-      return { type, ...attributes };
 -    });
 +  async model() {
 +    const { content } = await this.store.request(query('rental'));
