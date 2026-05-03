@@ -205,7 +205,7 @@ Alright, now that we have our model set up, it's time to refactor our route hand
 -    let { data } = await response.json();
 -
 -    return data.map((model) => {
--      let { attributes } = model;
+-      let { id, attributes } = model;
 -      let type;
 +  @service store;
  
@@ -215,7 +215,7 @@ Alright, now that we have our model set up, it's time to refactor our route hand
 -        type = 'Standalone';
 -      }
 -
--      return { type, ...attributes };
+-      return { id, type, ...attributes };
 -    });
 +  async model() {
 +    const { content } = await this.store.request(query('rental'));
