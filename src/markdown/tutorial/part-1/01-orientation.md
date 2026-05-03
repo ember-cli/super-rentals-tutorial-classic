@@ -202,7 +202,7 @@ del package.json
 ```
 
 ```run:command hidden=true cwd=super-rentals
-node -e "const fs=require('fs'),f='ember-cli-build.js';fs.writeFileSync(f,fs.readFileSync(f,'utf8').replace(/\n{3,}/g,'\n\n'));"
+node -e "const fs=require('fs');['ember-cli-build.js','app/services/store.js'].forEach(f=>{try{fs.writeFileSync(f,fs.readFileSync(f,'utf8').replace(/\n{3,}/g,'\n\n'));}catch(e){}});"
 ```
 
 ```run:command hidden=true cwd=super-rentals
@@ -214,6 +214,7 @@ git add package.json
 pnpm test
 git add .prettierignore
 git add ember-cli-build.js
+git add app/services/store.js
 git add app/index.html
 git add config/environment.js
 git add public/_redirects
