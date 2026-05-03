@@ -325,7 +325,7 @@ The next step that we need to do, is to configure our  `legacyStore` to use this
  
 @@ -8,2 +9,3 @@ const Store = useLegacyStore({
      // -- your handlers here
-+    JsonSuffixHandler
++    JsonSuffixHandler,
    ],
 ```
 
