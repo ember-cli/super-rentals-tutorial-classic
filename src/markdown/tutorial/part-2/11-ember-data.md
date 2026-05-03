@@ -197,7 +197,7 @@ Alright, now that we have our model set up, it's time to refactor our route hand
 -const COMMUNITY_CATEGORIES = ['Condo', 'Townhouse', 'Apartment'];
 +import { service } from '@ember/service';
 +import { query } from '@warp-drive/utilities/json-api';
-
+ 
  export default class IndexRoute extends Route {
 -  async model() {
 -    // eslint-disable-next-line warp-drive/no-external-request-patterns
@@ -208,7 +208,7 @@ Alright, now that we have our model set up, it's time to refactor our route hand
 -      let { attributes } = model;
 -      let type;
 +  @service store;
-
+ 
 -      if (COMMUNITY_CATEGORIES.includes(attributes.category)) {
 -        type = 'Community';
 -      } else {
@@ -221,6 +221,7 @@ Alright, now that we have our model set up, it's time to refactor our route hand
 +    const { content } = await this.store.request(query('rental'));
 +    return content.data;
    }
+ }
 ```
 
 ```run:file:patch lang=js cwd=super-rentals filename=app/routes/rental.js
@@ -230,7 +231,7 @@ Alright, now that we have our model set up, it's time to refactor our route hand
 -const COMMUNITY_CATEGORIES = ['Condo', 'Townhouse', 'Apartment'];
 +import { service } from '@ember/service';
 +import { findRecord } from '@warp-drive/utilities/json-api';
-
+ 
  export default class RentalRoute extends Route {
 -  async model(params) {
 -    // eslint-disable-next-line warp-drive/no-external-request-patterns
@@ -240,7 +241,7 @@ Alright, now that we have our model set up, it's time to refactor our route hand
 -    let { id, attributes } = data;
 -    let type;
 +  @service store;
-
+ 
 -    if (COMMUNITY_CATEGORIES.includes(attributes.category)) {
 -      type = 'Community';
 -    } else {
