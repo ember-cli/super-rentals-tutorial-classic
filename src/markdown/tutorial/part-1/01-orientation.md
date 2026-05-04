@@ -207,8 +207,14 @@ git add package.json
 ```
 
 ```run:command hidden=true cwd=super-rentals
+pnpm lint:fix
+```
+
+```run:command hidden=true cwd=super-rentals
 pnpm test
 git add .prettierignore
+git add ember-cli-build.js
+git add app/services/store.js
 git add app/index.html
 git add config/environment.js
 git add public/_redirects
@@ -290,7 +296,7 @@ As text on the welcome page pointed out, the source code for the page is located
 -  {{outlet}}
 -
 -  {{! The following component displays Ember's default welcome message. }}
--  <WelcomePage @extension="gjs" />
+-  <WelcomePage />
 -  {{! Feel free to remove this! }}
 +  Hello World!!!
  </template>

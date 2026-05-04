@@ -191,15 +191,16 @@ wait  #qunit-banner.qunit-pass
 Alright, now that we have our model set up, it's time to refactor our route handlers to use EmberData and remove the duplication!
 
 ```run:file:patch lang=js cwd=super-rentals filename=app/routes/index.js
-@@ -1,22 +1,11 @@
+@@ -1,24 +1,12 @@
  import Route from '@ember/routing/route';
 -
 -const COMMUNITY_CATEGORIES = ['Condo', 'Townhouse', 'Apartment'];
 +import { service } from '@ember/service';
 +import { query } from '@warp-drive/utilities/json-api';
-
+ 
  export default class IndexRoute extends Route {
 -  async model() {
+-    // eslint-disable-next-line warp-drive/no-external-request-patterns
 -    let response = await fetch('/api/rentals.json');
 -    let { data } = await response.json();
 -
@@ -207,7 +208,7 @@ Alright, now that we have our model set up, it's time to refactor our route hand
 -      let { id, attributes } = model;
 -      let type;
 +  @service store;
-
+ 
 -      if (COMMUNITY_CATEGORIES.includes(attributes.category)) {
 -        type = 'Community';
 -      } else {
@@ -220,25 +221,27 @@ Alright, now that we have our model set up, it's time to refactor our route hand
 +    const { content } = await this.store.request(query('rental'));
 +    return content.data;
    }
+ }
 ```
 
 ```run:file:patch lang=js cwd=super-rentals filename=app/routes/rental.js
-@@ -1,20 +1,13 @@
+@@ -1,21 +1,13 @@
  import Route from '@ember/routing/route';
 -
 -const COMMUNITY_CATEGORIES = ['Condo', 'Townhouse', 'Apartment'];
 +import { service } from '@ember/service';
 +import { findRecord } from '@warp-drive/utilities/json-api';
-
+ 
  export default class RentalRoute extends Route {
 -  async model(params) {
+-    // eslint-disable-next-line warp-drive/no-external-request-patterns
 -    let response = await fetch(`/api/rentals/${params.rental_id}.json`);
 -    let { data } = await response.json();
 -
 -    let { id, attributes } = data;
 -    let type;
 +  @service store;
-
+ 
 -    if (COMMUNITY_CATEGORIES.includes(attributes.category)) {
 -      type = 'Community';
 -    } else {
@@ -322,7 +325,7 @@ The next step that we need to do, is to configure our  `legacyStore` to use this
  
 @@ -8,2 +9,3 @@ const Store = useLegacyStore({
      // -- your handlers here
-+    JsonSuffixHandler
++    JsonSuffixHandler,
    ],
 ```
 

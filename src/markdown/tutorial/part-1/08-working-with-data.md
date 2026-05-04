@@ -261,7 +261,7 @@ Awesome! Our "server" is now up and running, serving up our rental properties as
 Now, let's turn our attention to our model hook again. We need to change it so that we actually fetch the data from the server.
 
 ```run:file:patch lang=js cwd=super-rentals filename=app/routes/index.js
-@@ -4,16 +4,5 @@
+@@ -4,16 +4,6 @@
    async model() {
 -    return {
 -      title: 'Grand Old Mansion',
@@ -277,6 +277,7 @@ Now, let's turn our attention to our model hook again. We need to change it so t
 -      image: 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Crane_estate_(5).jpg',
 -      description: 'This grand old mansion sits on over 100 acres of rolling hills and dense redwood forests.',
 -    };
++    // eslint-disable-next-line warp-drive/no-external-request-patterns
 +    let response = await fetch('/api/rentals.json');
 +    let parsed = await response.json();
 +    return parsed;
@@ -315,12 +316,13 @@ In [Part 2](../../part-2/) of this tutorial, we will learn about a more convenie
 We can handle it all in our model hook:
 
 ```run:file:patch lang=js cwd=super-rentals filename=app/routes/index.js
-@@ -2,7 +2,21 @@
+@@ -2,8 +2,22 @@
 
 +const COMMUNITY_CATEGORIES = ['Condo', 'Townhouse', 'Apartment'];
 +
  export default class IndexRoute extends Route {
    async model() {
+     // eslint-disable-next-line warp-drive/no-external-request-patterns
      let response = await fetch('/api/rentals.json');
 -    let parsed = await response.json();
 -    return parsed;
