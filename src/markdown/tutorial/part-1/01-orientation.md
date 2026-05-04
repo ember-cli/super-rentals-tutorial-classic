@@ -202,12 +202,12 @@ del package.json
 ```
 
 ```run:command hidden=true cwd=super-rentals
-pnpm lint:fix
+pnpm i --save-dev concurrently
+git add package.json
 ```
 
 ```run:command hidden=true cwd=super-rentals
-pnpm i --save-dev concurrently
-git add package.json
+pnpm lint:fix
 ```
 
 ```run:command hidden=true cwd=super-rentals
