@@ -202,7 +202,7 @@ del package.json
 ```
 
 ```run:command hidden=true cwd=super-rentals
-node -e "const fs=require('fs');['ember-cli-build.js','app/services/store.js'].forEach(f=>{try{fs.writeFileSync(f,fs.readFileSync(f,'utf8').replace(/\n{3,}/g,'\n\n'));}catch(e){}});"
+pnpm lint:fix
 ```
 
 ```run:command hidden=true cwd=super-rentals
