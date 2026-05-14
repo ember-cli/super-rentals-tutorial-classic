@@ -91,7 +91,7 @@ async function main() {
         script.push(`  await page.evaluate(${js(params[0])});`);
         break;
       case 'visit':
-                script.push(`  for (let _attempt = 0; _attempt < 3; _attempt++) {`);
+        script.push(`  for (let _attempt = 0; _attempt < 3; _attempt++) {`);
         script.push(`    try {`);
         script.push(`      await page.goto(${js(params[0])}, { waitUntil: 'networkidle0' });`);
         script.push(`      break;`);
