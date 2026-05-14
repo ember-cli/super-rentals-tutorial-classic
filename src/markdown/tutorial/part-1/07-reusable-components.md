@@ -258,16 +258,16 @@ To update component arguments from inside a test, we need a way to hold mutable 
 +import { tracked } from '@glimmer/tracking';
  
 -module('Integration | Component | map', function (hooks) {
-+module('Integration | Component | map', function(hooks) {
++module('Integration | Component | map', function (hooks) {
    setupRenderingTest(hooks);
  
 -  test('it renders a map for the specified parameters', async function (assert) {
-+  test('it renders a map for the specified parameters', async function(assert) {
++  test('it renders a map for the specified parameters', async function (assert) {
      await render(<template>
 @@ -24,2 +25,34 @@ module('Integration | Component | map', function (hooks) {
    });
 +
-+  test('it updates the style when the dimensions change', async function(assert) {
++  test('it updates the style when the dimensions change', async function (assert) {
 +    class State {
 +      @tracked width = 150;
 +      @tracked height = 120;
@@ -341,10 +341,10 @@ Next, we use `...attributes` to allow the invoker to further customize the map `
 Let's add a test to verify that `...attributes` works correctly:
 
 ```run:file:patch lang=gjs cwd=super-rentals filename=tests/integration/components/map-test.gjs
-@@ -57,2 +57,23 @@ module('Integration | Component | map', function(hooks) {
+@@ -57,2 +57,23 @@ module('Integration | Component | map', function (hooks) {
    });
 +
-+  test('the attributes can be customized', async function(assert) {
++  test('the attributes can be customized', async function (assert) {
 +    await render(<template>
 +      <Map
 +        @lat="37.7797"
