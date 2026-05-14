@@ -46,7 +46,6 @@ However, in the case of our `<Map>` component, we are pretty sure that we are go
 > Too much typing? Use `ember g component map -gc` instead. The `-gc` flag stands for **G**limmer **c**omponent, but you may also remember it as **g**enerate **c**lass.
 
 ```run:command hidden=true cwd=super-rentals
-pnpm test
 git add package.json
 git add app/components/map.gjs
 git add tests/integration/components/map-test.gjs
