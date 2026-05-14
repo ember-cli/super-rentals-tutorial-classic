@@ -142,7 +142,6 @@ Let's write some initial tests to make sure the component renders correctly:
 ```
 
 ```run:command hidden=true cwd=super-rentals
-pnpm test
 git add app/components/map.gjs
 git add tests/integration/components/map-test.gjs
 ```
