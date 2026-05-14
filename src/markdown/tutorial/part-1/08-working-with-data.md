@@ -89,7 +89,6 @@ wait  .rentals li:nth-of-type(3) article.rental
 Awesome!
 
 ```run:command hidden=true cwd=super-rentals
-ember test --path dist
 git add app/routes/index.js
 git add app/templates/index.gjs
 ```
@@ -152,10 +151,10 @@ By passing in `@model` into the `<Rental>` component as the `@rental` argument, 
 +      @lat={{@rental.location.lat}}
 +      @lng={{@rental.location.lng}}
        @zoom="9"
-@@ -30,3 +30,3 @@ import Map from 'super-rentals/components/map';
-       @height="150"
--      alt="A map of Grand Old Mansion"
-+      alt="A map of {{@rental.title}}"
+@@ -31,3 +31,3 @@ import Map from 'super-rentals/components/map';
+       role="img"
+-      aria-label="A map of Grand Old Mansion"
++      aria-label="A map of {{@rental.title}}"
      />
 ```
 
@@ -208,7 +207,6 @@ Therefore, in our `<Rental>` component's test, we will have to feed the data int
 Notice that we also need to update the invocation of the `<Rental>` component in the `render` function call to also have a `@rental` argument passed into it. If we run our tests now, they should all pass!
 
 ```run:command hidden=true cwd=super-rentals
-ember test --path dist
 git add app/components/rental.gjs
 git add app/templates/index.gjs
 git add tests/integration/components/rental-test.gjs
@@ -381,7 +379,7 @@ Hooray! Finally we're seeing different rental properties in our list. And we got
 Better yet, all of our tests are still passing too!
 
 ```run:command hidden=true cwd=super-rentals
-ember test --path dist
+pnpm test
 git add app/routes/index.js
 git add app/templates/index.gjs
 ```
